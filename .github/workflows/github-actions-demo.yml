@@ -15,7 +15,6 @@ jobs:
         run: |
           npm install -g pnpm 
           pnpm install -P
-          tar -zcvf ../release.tgz .
 
       - name: SSH
         uses: ErenKrt/ssh-push@main
@@ -23,12 +22,12 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: "../release.tgz"
-          destination: "/root"
+          source: "./"
+          destination: "/root/archive.zip"
           scripts: |
             cd /root
             rm -rf app
             mkdir /root/app
-            tar -zxvf ./release.tgz -C /root/app
-            rm -rf ./release.tgz
+            unzip archive.zip -d /root/app
+            rm -rf archive.zip
             
