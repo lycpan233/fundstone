@@ -10,4 +10,6 @@ jobs:
         with:
           node-version: "20.14.0"
           cache: "pnpm"
-      - run: pnpm install
+      - run: npm install -g pnpm
+      - run: pnpm install -P
+      - run: pnpm start
