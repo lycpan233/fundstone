@@ -28,8 +28,7 @@ jobs:
             kill -9 $(lsof -t -i :7001)
             rm -rf /home/app && mkdir /home/app
             cd /home/app && mv /home/archive.zip .
-            unzip archive.zip -d /home/app
-            rm -rf archive.zip
+            cd /home/app && unzip archive.zip -d /home/app && rm -rf archive.zip
             rm -rf /home/app/node_modules
             sudo -s
             cd /home/app
