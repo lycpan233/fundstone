@@ -13,6 +13,7 @@ class HomeController extends Controller {
       name: config.name,
       version: config.pkg.version,
       timestamp: dayjs().unix(),
+      uniqueId: config.uuid,
     };
   }
 }

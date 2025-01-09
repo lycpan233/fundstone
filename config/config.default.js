@@ -1,4 +1,5 @@
 /* eslint valid-jsdoc: "off" */
+const { v4: uuidv4 } = require('uuid');
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -20,6 +21,8 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
   };
+
+  config.uuid = uuidv4().replace(/-/g, '');
 
   return {
     ...config,

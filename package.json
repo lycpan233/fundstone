@@ -10,7 +10,8 @@
     "dayjs": "^1.11.13",
     "egg": "^3.17.5",
     "egg-router-plus": "^2.0.0",
-    "egg-scripts": "2"
+    "egg-scripts": "2",
+    "uuid": "^11.0.4"
   },
   "devDependencies": {
     "egg-bin": "6",

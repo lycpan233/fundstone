@@ -26,5 +26,5 @@ jobs:
             mkdir /root/app
             unzip archive.zip -d /root/app
             rm -rf archive.zip
-            cd /root/app && pnpm install —P && pnpm start
+            cd /root/app && pnpm install -P && pnpm start
             
