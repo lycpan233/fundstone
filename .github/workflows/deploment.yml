@@ -26,9 +26,11 @@ jobs:
           destination: "/home/archive.zip"
           scripts: |
             kill -9 $(lsof -t -i :7001)
-            cd /home && rm -rf app
+            cd /home
+            rm -rf app
             mkdir /home/app
-            unzip archive.zip -d /home/app && chmod -R 777 /home/app
+            unzip archive.zip -d /home/app
+            chmod -R 777 /home/app
             rm -rf archive.zip
             sudo -s && cd /home/app && pnpm install -P
             pnpm start
