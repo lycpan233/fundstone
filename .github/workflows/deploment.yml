@@ -25,9 +25,11 @@ jobs:
           source: "./"
           destination: "/root/archive.zip"
           scripts: |
+            cd /root/app && pnpm stop
             cd /root
             rm -rf app
             mkdir /root/app
             unzip archive.zip -d /root/app
             rm -rf archive.zip
+            cd /root/app && pnpm start
             
