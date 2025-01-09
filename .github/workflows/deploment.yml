@@ -30,5 +30,4 @@ jobs:
             cd /home/app && mv /home/archive.zip .
             cd /home/app && unzip archive.zip -d /home/app && rm -rf archive.zip
             rm -rf /home/app/node_modules
-            sudo bash -c "cd /home/app && pnpm install -P"
-            pnpm start
+            cd /home/app && pnpm install -P && pnpm start
