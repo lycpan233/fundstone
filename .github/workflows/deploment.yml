@@ -11,6 +11,11 @@ jobs:
         with:
           node-version: "20.14.0"
 
+      - name: Install Dependencies && tar Project
+        run: |
+          npm install -g pnpm 
+          pnpm install -P
+
       - name: SSH
         uses: ErenKrt/ssh-push@main
         with:
@@ -25,6 +30,7 @@ jobs:
             rm -rf app
             mkdir /root/app
             unzip archive.zip -d /root/app
+            chmod -R 777 /root/app
             rm -rf archive.zip
-            cd /root/app && pnpm install -P && pnpm start
+            cd /root/app && pnpm start
             
