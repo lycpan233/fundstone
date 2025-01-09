@@ -11,10 +11,10 @@ jobs:
         with:
           node-version: "20.14.0"
 
-      - name: Install Dependencies && tar Project
-        run: |
-          npm install -g pnpm 
-          pnpm install -P
+      # - name: Install Dependencies && tar Project
+      #   run: |
+      #     npm install -g pnpm 
+      #     pnpm install -P
 
       - name: SSH
         uses: ErenKrt/ssh-push@main
@@ -23,14 +23,13 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           source: "./"
-          destination: "/root/archive.zip"
+          destination: "/home/archive.zip"
           scripts: |
             kill -9 $(lsof -t -i :7001)
-            cd /root
-            rm -rf app
-            mkdir /root/app
-            unzip archive.zip -d /root/app
-            chmod -R 777 /root/app
+            cd /home && rm -rf app
+            mkdir /home/app
+            unzip archive.zip -d /home/app && chmod -R 777 /home/app
             rm -rf archive.zip
-            cd /root/app && pnpm start
+            sudo -s && cd /home/app && pnpm install -P
+            pnpm start
             
