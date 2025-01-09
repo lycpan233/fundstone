@@ -23,9 +23,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           source: "./"
-          destination: "root/archive.zip"
+          destination: "/root/archive.zip"
           scripts: |
             kill -9 $(lsof -t -i :7001)
-            rm -rf root/app && mkdir root/app
-            cd root/app && unzip root/archive.zip -d root/app && rm -rf root/archive.zip && rm -rf root/app/node_modules
-            sudo -s && source root/.zshrc && cd root/app && pnpm install -P && pnpm start 
+            rm -rf /root/app && mkdir /root/app
+            unzip /root/archive.zip -d /root/app && rm -rf /root/archive.zip && rm -rf /root/app/node_modules
+            sudo -s && source ~/.zshrc && cd /root/app && pnpm install -P && pnpm start 
