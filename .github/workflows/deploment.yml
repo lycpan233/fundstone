@@ -1,5 +1,9 @@
 name: Node.js
-on: [push]
+on: 
+  push:
+    branches:
+      - master
+      - 'ci-**'
 jobs:
   deployment_job:
     runs-on: ubuntu-latest
@@ -11,10 +15,10 @@ jobs:
         with:
           node-version: "20.14.0"
 
-      # - name: Install Dependencies && tar Project
-      #   run: |
-      #     npm install -g pnpm 
-      #     pnpm install -P
+      - name: Install Dependencies && tar Project
+        run: |
+          npm install -g pnpm 
+          pnpm install -P
 
       - name: SSH
         uses: ErenKrt/ssh-push@main
