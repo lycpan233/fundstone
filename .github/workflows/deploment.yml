@@ -19,17 +19,19 @@ jobs:
         run: |
           npm install -g pnpm 
           pnpm install -P
+          tar -zcvf ../release.tgz ./
 
       - name: SSH
-        uses: ErenKrt/ssh-push@main
+        uses: lycpan233/ssh-deploy-nodejs@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          source: "./"
-          destination: "/root/archive.zip"
+          privateKey: ${{ secrets.SSH_PEM }}
+          source: "../release.tgz"
+          destination: "/root/release.tgz"
+          workdir: "/root"
           scripts: |
             kill -9 $(lsof -t -i :7001)
-            rm -rf /root/app && mkdir /root/app
-            unzip /root/archive.zip -d /root/app && rm -rf /root/archive.zip && rm -rf /root/app/node_modules
-            sudo -s && source ~/.zshrc && cd /root/app && pnpm install -P && pnpm start 
+            rm -rf ./app && mkdir ./app
+            tar -zxvf release.tgz -C /root/app && rm -rf release.zip
+            sudo -s && source ~/.zshrc && cd /root/app && pnpm start
