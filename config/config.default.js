@@ -17,15 +17,12 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
-  // add your user config here
-  const userConfig = {
-    // myAppName: 'egg',
-  };
-
   config.uuid = uuidv4().replace(/-/g, '');
+
+  config.sequelize = {
+  };
 
   return {
     ...config,
-    ...userConfig,
   };
 };
