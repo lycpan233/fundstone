@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "egg": {
+    "typescript": true,
     "declarations": true
   },
   "dependencies": {
@@ -13,6 +14,8 @@
     "egg-scripts": "2",
     "egg-sequelize": "^6.0.0",
     "mysql2": "^3.12.0",
+    "node-rsa": "^1.1.1",
+    "ramda": "^0.30.1",
     "sequelize": "^6.0.0",
     "uuid": "^11.0.4"
   },
@@ -30,6 +33,7 @@
     "start": "egg-scripts start --daemon --title=egg-server-fundstone",
     "stop": "egg-scripts stop --title=egg-server-fundstone",
     "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test:local",
     "test:local": "egg-bin test",
     "cov": "egg-bin cov",

@@ -6,7 +6,7 @@ module.exports = {
   },
 
   sequelize: {
-    enable: true,
+    enable: false,
     package: 'egg-sequelize',
   },
 };
