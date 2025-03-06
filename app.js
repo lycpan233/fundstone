@@ -10,7 +10,6 @@ class AppBootHook {
 
   async configWillLoad() { // 文件配置加载完成之前
     const { config } = this.app;
-
     // 解密字段
     if (config.secretKeys && config.secretKeys.length) {
       try {
@@ -35,9 +34,8 @@ class AppBootHook {
         throw new Error('decryption failure ' + error.message);
       }
     }
-
-
   }
+
 
 }
 

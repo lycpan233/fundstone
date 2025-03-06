@@ -29,4 +29,4 @@ function encrypt(str) {
   return encryptData;
 }
 
-encrypt('hello world');
+encrypt('');
