@@ -22,6 +22,18 @@ module.exports = appInfo => {
   config.sequelize = {
     dialect: 'mysql',
     connectionUri: 'mysql://root:666666@127.0.0.1:3306/footstone',
+    define: {
+      timestamps: false,
+      underscored: false,
+      freezeTableName: true,
+      version: false,
+    },
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
   };
 
   config.secretKeys = [
