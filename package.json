@@ -13,10 +13,12 @@
     "egg-router-plus": "^2.0.0",
     "egg-scripts": "2",
     "egg-sequelize": "^6.0.0",
+    "egg-validate": "^2.0.2",
     "mysql2": "^3.12.0",
     "node-rsa": "^1.1.1",
     "ramda": "^0.30.1",
     "sequelize": "^6.0.0",
+    "swagger-jsdoc": "^6.2.8",
     "uuid": "^11.0.4"
   },
   "devDependencies": {

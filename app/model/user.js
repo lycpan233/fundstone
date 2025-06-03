@@ -1,3 +1,4 @@
+const R = require('ramda');
 module.exports = app => {
   const { DataTypes } = app.Sequelize;
 
@@ -11,21 +12,11 @@ module.exports = app => {
         autoIncrement: true,
         comment: 'ID',
       },
-      name: {
+      nickname: {
         type: DataTypes.STRING(32),
         allowNull: false,
         defaultValue: '',
-        comment: '用户名',
-      },
-      salt: {
-        type: DataTypes.STRING(32),
-        allowNull: false,
-        comment: '盐',
-      },
-      password: {
-        type: DataTypes.STRING(64),
-        allowNull: false,
-        comment: '密码',
+        comment: '昵称',
       },
       email: {
         type: DataTypes.STRING(255),
@@ -38,6 +29,16 @@ module.exports = app => {
         allowNull: false,
         defaultValue: '',
         comment: '手机号',
+      },
+      salt: {
+        type: DataTypes.STRING(32),
+        allowNull: false,
+        comment: '盐',
+      },
+      password: {
+        type: DataTypes.STRING(64),
+        allowNull: false,
+        comment: '密码',
       },
       createdAt: {
         type: DataTypes.BIGINT(13).UNSIGNED,
@@ -53,17 +54,16 @@ module.exports = app => {
     },
     {
       tableName: 'user',
-      indexes: [
-        {
-          name: 'uk_email',
-          fields: [ 'email' ],
-          unique: true,
+      timestamps: true,
+      hooks: {
+        beforeCreate: user => {
+          if (!user.createdAt || R.type(user.createdAt) === 'Date') user.createdAt = Date.now();
+          if (!user.updatedAt || R.type(user.updatedAt) === 'Date') user.updatedAt = Date.now();
         },
-        {
-          name: 'idx_mobile',
-          fields: [ 'mobile' ],
+        beforeUpdate: user => {
+          if (!user.updatedAt || R.type(user.updatedAt) === 'Date') user.updatedAt = Date.now();
         },
-      ],
+      },
     }
   );
 

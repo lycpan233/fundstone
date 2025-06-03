@@ -7,4 +7,6 @@ module.exports = app => {
 
   userRouter.get('/', controller.user.index);
 
+  // 创建用户
+  userRouter.post('/', controller.user.create);
 };

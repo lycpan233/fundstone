@@ -21,21 +21,11 @@ module.exports = {
           autoIncrement: true,
           comment: 'ID',
         },
-        name: {
+        nickname: {
           type: DataTypes.STRING(32),
           allowNull: false,
           defaultValue: '',
-          comment: '用户名',
-        },
-        salt: {
-          type: DataTypes.STRING(32),
-          allowNull: false,
-          comment: '盐',
-        },
-        password: {
-          type: DataTypes.STRING(64),
-          allowNull: false,
-          comment: '密码',
+          comment: '昵称',
         },
         email: {
           type: DataTypes.STRING(255),
@@ -48,6 +38,16 @@ module.exports = {
           allowNull: false,
           defaultValue: '',
           comment: '手机号',
+        },
+        salt: {
+          type: DataTypes.STRING(32),
+          allowNull: false,
+          comment: '盐',
+        },
+        password: {
+          type: DataTypes.STRING(64),
+          allowNull: false,
+          comment: '密码',
         },
         createdAt: {
           type: DataTypes.BIGINT(13).UNSIGNED,
@@ -63,13 +63,17 @@ module.exports = {
       },
       {
         comment: '用户信息表',
-        indexes: [
-          {
-            unique: true,
-            fields: [ 'mobile' ], // 创建唯一索引
+        uniqueKeys: {
+          uk_email: {
+            fields: [ 'email' ],
           },
-        ],
+        },
       });
+
+    await queryInterface.addIndex('user', {
+      name: 'idx_mobile',
+      fields: [ 'mobile' ],
+    });
 
     return;
   },

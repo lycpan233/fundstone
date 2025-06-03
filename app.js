@@ -37,6 +37,8 @@ class AppBootHook {
   }
 
 
+  async willReady() { // 插件启动完毕
+  }
 }
 
 module.exports = AppBootHook;

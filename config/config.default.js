@@ -19,7 +19,13 @@ module.exports = appInfo => {
 
   config.uuid = uuidv4().replace(/-/g, '');
 
-  config.sequelize = {
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+  };
+
+  config.sequelize = { // 数据库链接
     dialect: 'mysql',
     connectionUri: 'mysql://root:666666@127.0.0.1:3306/footstone',
     define: {
@@ -36,8 +42,36 @@ module.exports = appInfo => {
     },
   };
 
+  // 加密字段
   config.secretKeys = [
   ];
+
+  // 验证器
+  config.validate = {
+    convert: true, // 验证后是否转化类型
+  };
+
+  // 错误捕获
+  config.onerror = {
+    html(error, ctx) {
+      ctx.body = '<h3>this is error page</h3>';
+    },
+
+    json(error, ctx) {
+      ctx.status = 200; // 统一返回 200 错误状态
+      ctx.handleError(error);
+      ctx.body = {
+        code: error.code || 500,
+        msg: error.message ? error.message : '服务器开小差了...',
+        data: {},
+      };
+    },
+
+    accepts(ctx) {
+      if (ctx.request.path.endsWith('.html')) return 'html';
+      return 'json';
+    },
+  };
 
   return {
     ...config,
