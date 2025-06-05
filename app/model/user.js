@@ -1,4 +1,28 @@
+'use strict';
 const R = require('ramda');
+/**
+ * @typedef {import('sequelize').Sequelize} Sequelize
+ * @typedef {import('sequelize').ModelStatic<Model>} ModelCtor
+ */
+
+/**
+ * @typedef {Object} UserAttributes
+ * @property {number} id
+ * @property {string} nickname
+ * @property {string} email
+ * @property {string} mobile
+ * @property {string} salt
+ * @property {string} password
+ * @property {number} createdAt
+ * @property {number} updatedAt
+ */
+
+/**
+ * @param {object} app - app
+ * @param {Sequelize} app.Sequelize - sequelize class
+ * @param {Sequelize} app.model - sequelize obj
+ * @return {ModelCtor} User
+ */
 module.exports = app => {
   const { DataTypes } = app.Sequelize;
 

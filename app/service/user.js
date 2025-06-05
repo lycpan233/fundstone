@@ -1,9 +1,14 @@
 'use strict';
+/** @typedef {import('../types/user').User} User */
 
 const Service = require('egg').Service;
 const crypto = require('crypto');
 
 class UserService extends Service {
+  /**
+   * 返回用户信息
+   * @return {User} userInfo
+   */
   async index() {
     const { ctx } = this;
     const resp = await ctx.model.User.findOne({});
@@ -25,20 +30,12 @@ class UserService extends Service {
   }
 
   /**
-   * @typedef User
-   * @type {object}
-   * @property {string} id - an ID.
-   * @property {string} nickname - your name.
-   * @property {number} age - your age.
-   */
-
-  /**
    * 创建用户
    * @param {object} body - 入参
    * @param {string} body.email - 用户邮箱
    * @param {string} [body.nickname] - 用户昵称
    * @param {string} [body.password] - 用户密码
-   * @return {User} res
+   * @return {User} userInfo
    */
   async create(body) {
     const { ctx } = this;
