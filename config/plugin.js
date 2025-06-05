@@ -1,5 +1,11 @@
 /** @type Egg.EggPlugin */
+const path = require('path');
 module.exports = {
+  valuesEncrypt: {
+    enable: true,
+    path: path.join(__dirname, '../lib/plugin/egg-values-encrypt'),
+  },
+
   routerPlus: { // 路由拓展
     enable: true,
     package: 'egg-router-plus',

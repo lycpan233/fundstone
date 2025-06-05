@@ -1,0 +1,26 @@
+{
+  "name": "egg-values-encrypt",
+  "version": "1.0.0",
+  "description": "This plugin uses asymmetric encryption to encrypt values.",
+  "main": "app.js",
+  "eggPlugin": {
+    "name": "egg-values-encrypt"
+  },
+  "dependencies": {
+    "node-rsa": "^1.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lycpan233",
+  "license": "ISC",
+  "keywords": [
+    "egg",
+    "egg-plugin",
+    "eggPlugin",
+    "egg-values-encrypt",
+    "egg-valuesEncrypt",
+    "values-encrypt",
+    "valuesEncrypt"
+  ]
+}
