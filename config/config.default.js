@@ -27,7 +27,7 @@ module.exports = appInfo => {
 
   config.sequelize = { // 数据库链接
     dialect: 'mysql',
-    connectionUri: 'mysql://root:666666@127.0.0.1:3306/footstone',
+    connectionUri: 'YFkHbb7frVBHjAITcEeSbmOUyOPC1AhHYi+6Pn28KVAazgbpJ9Ku4RPw3GwPg5WHvsW3QtTXibiys/XWU1rDaHWFmSNNOqV+BfIH/VcU4GWwo3flbZuOeBDxaUqmoJ4DJ03iSMve8eTVj3TS0kK2eqloNA7KdslIPjKDpPGzBzg=',
     define: {
       timestamps: false,
       underscored: false,
@@ -44,6 +44,7 @@ module.exports = appInfo => {
 
   // 加密字段
   config.secretKeys = [
+    'sequelize.connectionUri',
   ];
 
   // 验证器

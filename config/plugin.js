@@ -1,5 +1,6 @@
-/** @type Egg.EggPlugin */
 const path = require('path');
+
+/** @type Egg.EggPlugin */
 module.exports = {
   valuesEncrypt: {
     enable: true,
@@ -13,7 +14,7 @@ module.exports = {
 
   sequelize: { // 数据库连接
     enable: true,
-    package: 'egg-sequelize',
+    path: path.join(__dirname, '../lib/plugin/egg-sequelize'),
   },
 
   validate: { // 参数校验

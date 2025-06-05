@@ -4,7 +4,7 @@
   "description": "This plugin uses asymmetric encryption to encrypt values.",
   "main": "app.js",
   "eggPlugin": {
-    "name": "egg-values-encrypt"
+    "name": "valuesEncrypt"
   },
   "dependencies": {
     "node-rsa": "^1.1.1"
