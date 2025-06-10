@@ -38,8 +38,8 @@ class UserController extends Controller {
       },
     }, body);
     const params = R.pick([ 'email', 'nickname', 'password' ], body);
-    const reuslt = await service.user.create(params);
-    ctx.success(reuslt);
+    const userInfo = await service.user.create(params);
+    ctx.success(userInfo);
   }
 }
 

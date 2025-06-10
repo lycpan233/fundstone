@@ -5,5 +5,4 @@ module.exports = {
   generateUuid() {
     return uuidv4().replace(/-/g, '');
   },
-
 };
